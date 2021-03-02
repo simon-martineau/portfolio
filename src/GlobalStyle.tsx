@@ -6,6 +6,11 @@ interface IGlobalStyleProps {
 }
 
 export const GlobalStyle = createGlobalStyle`
+
+  * {
+    box-sizing: border-box;
+  }
+
   body {
     background-color: ${(props: IGlobalStyleProps) => props.theme.mainBg};
     font-family: "Overlock", "Segoe UI", "Roboto", "Oxygen",

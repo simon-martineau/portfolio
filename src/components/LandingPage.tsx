@@ -1,10 +1,10 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 const FullscreenWrapper = styled.div`
   background-color: ${(props) => props.theme.mainBg};
   color: ${(props) => props.theme.textColor};
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   display: flex;
   position: relative;
@@ -47,9 +47,27 @@ const PresentationSecondLine = styled.div`
   font-size: 38px;
 `;
 
+const NameAnimation = keyframes`
+
+  to {
+    back
+  }
+`;
+
 const MainColoredText = styled.span`
   color: ${(props) => props.theme.main};
+  animation: ${NameAnimation} 3s ease-in-out 1;
 `;
+
+// const TreeSvg = styled(SVG)`
+//   path {
+//     fill: ${(props) => props.theme.main};
+//   }
+//   position: absolute;
+//   top: 0;
+//   right: 15%;
+//   transform: scaleY(-1) scale(1.5) translateY(-19%);
+// `;
 
 export default function LandingPage() {
   return (

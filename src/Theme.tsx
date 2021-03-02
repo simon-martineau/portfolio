@@ -1,9 +1,9 @@
 import baseStyled, { ThemedStyledInterface } from "styled-components";
 
 export const theme = {
-  main: "#ffc700",
-  mainBg: "#635341",
-  textColor: "#eee",
+  main: "#2eafc0",
+  mainBg: "#06101b",
+  textColor: "#ddd",
 };
 
 export type Theme = typeof theme;
