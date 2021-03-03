@@ -27,14 +27,16 @@ export default function ProjectList() {
   }, []);
 
   return (
-    <ProjectCardsWrapper>
-      {projects.map((project: IProject) => {
-        let stuffs = [];
-        for (let i = 0; i < 5; ++i) {
-          stuffs.push(<ProjectCard key={i} project={project} />);
-        }
-        return stuffs;
-      })}
-    </ProjectCardsWrapper>
+    <div>
+      <ProjectCardsWrapper>
+        {projects.map((project: IProject) => {
+          let stuffs = [];
+          for (let i = 0; i < 5; ++i) {
+            stuffs.push(<ProjectCard key={i} project={project} />);
+          }
+          return stuffs;
+        })}
+      </ProjectCardsWrapper>
+    </div>
   );
 }

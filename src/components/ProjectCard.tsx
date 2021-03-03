@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { lighten, desaturate } from "polished";
 import { GoMarkGithub } from "react-icons/go";
 import Tag from "./Tag";
+import { useImageViewerContext } from "../ImageViewContext";
 
 interface IProjectCardProps {
   project: IProject;
@@ -107,6 +108,15 @@ const TagsWrapper = styled.div`
 `;
 
 export default function ProjectCard(props: IProjectCardProps) {
+  const imageViewer = useImageViewerContext();
+
+  const handleImageClick = () => {
+    imageViewer.showImageViewer(
+      props.project.thumbnail.image,
+      props.project.thumbnail.placeholder
+    );
+  };
+
   return (
     <CardWrapper>
       <Card>
@@ -114,6 +124,7 @@ export default function ProjectCard(props: IProjectCardProps) {
           <Thumbnail
             src={props.project.thumbnail.image}
             alt={props.project.thumbnail.placeholder}
+            onClick={handleImageClick}
           />
           <ProjectLink href={props.project.link}>
             <GoMarkGithub />
@@ -124,7 +135,7 @@ export default function ProjectCard(props: IProjectCardProps) {
           <Header>{props.project.title} </Header>
           <TagsWrapper>
             {props.project.tags.map((tag: ITag) => (
-              <Tag tag={tag}></Tag>
+              <Tag tag={tag} key={tag.id}></Tag>
             ))}
           </TagsWrapper>
           <p>{props.project.description}</p>
