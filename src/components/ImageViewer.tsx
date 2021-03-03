@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled, { createGlobalStyle } from "styled-components";
 import { FaTimes } from "react-icons/fa";
 
-import { ImageViewerContext } from "../ImageViewContext";
+import { ImageViewerContext, useImageViewerContext } from "../ImageViewContext";
 
 const ImageViewWrapper = styled.div`
   overflow: hidden;
@@ -45,6 +45,23 @@ const BlockScroll = createGlobalStyle`
 `;
 
 const ImageViewer = () => {
+  const imageViewerContext = useImageViewerContext();
+
+  const handleKeydown = (e: KeyboardEvent) => {
+    if (e.key === "Escape") {
+      e.preventDefault();
+      imageViewerContext.hideImageViewer();
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("keydown", handleKeydown);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeydown);
+    };
+  });
+
   return (
     <ImageViewerContext.Consumer>
       {(value) =>
