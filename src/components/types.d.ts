@@ -4,6 +4,13 @@ interface ITag {
   color: string;
 }
 
+interface IThumbnail {
+  id: number;
+  name: string;
+  image: string;
+  placeholder: string;
+}
+
 interface IProject {
   id: number;
   href: string;
@@ -11,5 +18,5 @@ interface IProject {
   description: string;
   link: string;
   tags: ITag[];
-  thumbnail: string | null;
+  thumbnail: IThumbnail;
 }
