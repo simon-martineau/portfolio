@@ -15,7 +15,7 @@ const ImageViewWrapper = styled.div`
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.8);
   user-select: none;
   -webkit-user-select: none;
 `;
@@ -56,7 +56,6 @@ const ImageViewer = () => {
 
   useEffect(() => {
     document.addEventListener("keydown", handleKeydown);
-
     return () => {
       document.removeEventListener("keydown", handleKeydown);
     };
