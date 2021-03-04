@@ -18,10 +18,10 @@ const ProjectCardsWrapper = styled.div`
 `;
 
 export default function ProjectList() {
-  const [projects, setProjects] = useState<IProject[]>([]);
+  const [projects, setProjects] = useState<Project[]>([]);
 
   useEffect(() => {
-    fetchResource("projects").then((projects: IProject[]) => {
+    fetchResource("projects").then((projects: Project[]) => {
       setProjects(projects);
     });
   }, []);
@@ -29,7 +29,7 @@ export default function ProjectList() {
   return (
     <div>
       <ProjectCardsWrapper>
-        {projects.map((project: IProject) => {
+        {projects.map((project: Project) => {
           let stuffs = [];
           for (let i = 0; i < 5; ++i) {
             stuffs.push(<ProjectCard key={i} project={project} />);

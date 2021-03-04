@@ -1,22 +1,22 @@
-interface ITag {
+interface Tag {
   id: number;
   name: string;
   color: string;
 }
 
-interface IThumbnail {
+interface Thumbnail {
   id: number;
   name: string;
   image: string;
   placeholder: string;
 }
 
-interface IProject {
+interface Project {
   id: number;
   href: string;
   title: string;
   description: string;
   link: string;
-  tags: ITag[];
-  thumbnail: IThumbnail;
+  tags: Tag[];
+  thumbnail: Thumbnail;
 }

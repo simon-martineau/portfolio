@@ -2,8 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { lighten } from "polished";
 
-interface ITagProps {
-  tag: ITag;
+interface TagProps {
+  tag: Tag;
 }
 
 const TagWrapper = styled.div`
@@ -16,6 +16,6 @@ const TagWrapper = styled.div`
   background-color: ${(props) => props.color};
 `;
 
-export default function Tag({ tag }: ITagProps) {
+export default function Tag({ tag }: TagProps) {
   return <TagWrapper color={tag.color}>{tag.name}</TagWrapper>;
 }

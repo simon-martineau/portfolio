@@ -5,8 +5,8 @@ import { GoMarkGithub } from "react-icons/go";
 import Tag from "./Tag";
 import { useImageViewerContext } from "../ImageViewContext";
 
-interface IProjectCardProps {
-  project: IProject;
+interface ProjectCardProps {
+  project: Project;
 }
 
 const CardShadow = styled.div`
@@ -107,7 +107,7 @@ const TagsWrapper = styled.div`
   }
 `;
 
-export default function ProjectCard(props: IProjectCardProps) {
+export default function ProjectCard(props: ProjectCardProps) {
   const imageViewer = useImageViewerContext();
 
   const handleImageClick = () => {
@@ -134,7 +134,7 @@ export default function ProjectCard(props: IProjectCardProps) {
         <RightSideWrapper>
           <Header>{props.project.title} </Header>
           <TagsWrapper>
-            {props.project.tags.map((tag: ITag) => (
+            {props.project.tags.map((tag: Tag) => (
               <Tag tag={tag} key={tag.id}></Tag>
             ))}
           </TagsWrapper>
