@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import ProjectList from "./ProjectList";
 import TagList from "./TagList";
 import styled from "styled-components";
 import { lighten } from "polished";
 
-const Spacer = styled.div`
-  height: 80px;
+interface SpacerProps {
+  size?: number;
+}
+const Spacer = styled.div<SpacerProps>`
+  height: ${({ size }) => (size ? size : "40")}px;
 `;
 
 const Title = styled.div`
@@ -15,14 +18,30 @@ const Title = styled.div`
   text-align: center;
 `;
 
+const Container = styled.div`
+  width: 85%;
+  max-width: 1470px;
+  margin: 0 auto;
+  @media only screen and (max-width: 768px) {
+    width: 92%;
+  }
+`;
+
 export default function ProjectSection() {
+  const [tagFilter, setTagFilter] = useState<Tag[]>([]);
+
+  const handleTagFilterChange = (newTagFilter: Tag[]) => {
+    setTagFilter(newTagFilter);
+  };
+
   return (
-    <div>
+    <Container>
       <Title>My Projects</Title>
       <Spacer />
-      <ProjectList />
-      <TagList />
+      <TagList onTagFilterChange={handleTagFilterChange} />
       <Spacer />
-    </div>
+      <ProjectList tagFilter={tagFilter} />
+      <Spacer />
+    </Container>
   );
 }

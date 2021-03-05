@@ -5,9 +5,6 @@ import ProjectCard from "./ProjectCard";
 import { fetchResource } from "../api";
 
 const ProjectCardsWrapper = styled.div`
-  width: 85%;
-  max-width: 1470px;
-  margin: 0 auto;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -17,7 +14,11 @@ const ProjectCardsWrapper = styled.div`
   }
 `;
 
-export default function ProjectList() {
+interface ProjectListProps {
+  tagFilter: Tag[];
+}
+
+export default function ProjectList({ tagFilter }: ProjectListProps) {
   const [projects, setProjects] = useState<Project[]>([]);
 
   useEffect(() => {
@@ -26,16 +27,27 @@ export default function ProjectList() {
     });
   }, []);
 
+  const projectContainsAllTags = (project: Project, tags: Tag[]) => {
+    let allTagsPresent = true;
+    tags.forEach(
+      (tag: Tag) =>
+        (allTagsPresent =
+          allTagsPresent &&
+          project.tags.find((value: Tag) => value.id === tag.id) !== undefined)
+    );
+    return allTagsPresent;
+  };
+
   return (
     <div>
       <ProjectCardsWrapper>
-        {projects.map((project: Project) => {
-          let stuffs = [];
-          for (let i = 0; i < 5; ++i) {
-            stuffs.push(<ProjectCard key={i} project={project} />);
-          }
-          return stuffs;
-        })}
+        {projects
+          .filter((project: Project) =>
+            projectContainsAllTags(project, tagFilter)
+          )
+          .map((project: Project) => (
+            <ProjectCard project={project} key={project.id} />
+          ))}
       </ProjectCardsWrapper>
     </div>
   );
