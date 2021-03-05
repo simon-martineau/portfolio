@@ -20,8 +20,8 @@ const TagWrapper = styled.div<TagWrapperProps>`
   border-radius: 20px;
   background-color: transparent;
   border: ${(props) => props.color} solid 2px;
-  user-select: ${({ clickable }) => (clickable ? "none" : "text")};
-  cursor: ${({ clickable }) => (clickable ? "pointer" : "text")};
+  user-select: none;
+  cursor: ${({ clickable }) => (clickable ? "pointer" : "inherit")};
 `;
 
 export default function Tag({ tag, checked, clickable }: TagProps) {
