@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import ProjectList from "./ProjectList";
 import TagList from "./TagList";
 import styled from "styled-components";
@@ -30,16 +30,16 @@ const Container = styled.div`
 export default function ProjectSection() {
   const [tagFilter, setTagFilter] = useState<Tag[]>([]);
 
-  const handleTagFilterChange = (newTagFilter: Tag[]) => {
+  const handleTagFilterChange = useCallback((newTagFilter: Tag[]) => {
     setTagFilter(newTagFilter);
-  };
+  }, []);
 
   return (
     <Container>
       <Title>My Projects</Title>
       <Spacer />
       <TagList onTagFilterChange={handleTagFilterChange} />
-      <Spacer />
+      <Spacer size={60} />
       <ProjectList tagFilter={tagFilter} />
       <Spacer />
     </Container>

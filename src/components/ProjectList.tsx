@@ -9,6 +9,7 @@ const ProjectCardsWrapper = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
+  align-items: flex-start;
   @media only screen and (max-width: 768px) {
     width: 92%;
   }

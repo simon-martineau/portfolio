@@ -89,7 +89,7 @@ const ProjectLink = styled.a`
 const Thumbnail = styled.img`
   width: 90%;
   height: auto;
-  border-radius: 5px;
+  border-radius: 10px;
   margin-bottom: 1em;
 `;
 
