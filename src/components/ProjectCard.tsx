@@ -135,7 +135,7 @@ export default function ProjectCard(props: ProjectCardProps) {
           <Header>{props.project.title} </Header>
           <TagsWrapper>
             {props.project.tags.map((tag: Tag) => (
-              <Tag tag={tag} key={tag.id}></Tag>
+              <Tag tag={tag} key={tag.id} small></Tag>
             ))}
           </TagsWrapper>
           <p>{props.project.description}</p>
